@@ -1,0 +1,30 @@
+.inputHolder{
+    margin: 1rem 0rem 1rem 0rem;
+}
+
+.inputHolder label{
+    font-weight: bolder;
+}
+
+.submitBtn{
+    margin-top: 2rem;
+    width: 100%;
+    background-color: green;
+    color: white;
+    border: yellowgreen solid 2px;
+    padding: 0.4rem;
+}
+
+.errorMsg{
+    color: red;
+    text-align: center;
+    display: none;
+}
+
+.errorMsg.visible{
+    display: block;
+}
+
+.errorInputField{
+    border: solid red 2px;
+}

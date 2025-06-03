@@ -1,0 +1,25 @@
+<form [formGroup]="formData" (submit)="submitForm($event)">
+    <div class="inputHolder">
+        <label for="username">Username</label><br>
+        <input class="w-100 inputField" id="username" type="text" formControlName="username">
+    </div>
+
+    <div class="errorMsg" [class.visible] = "formData.controls.username.invalid && formData.controls.username.touched">Username required</div>
+
+    <div class="inputHolder">
+        <label for="password">Password</label><br>
+        <input class="w-100 inputField" id="password" type="password" formControlName="password">
+        
+    </div>
+
+    <div class="errorMsg" [class.visible] = "formData.controls.password.invalid && formData.controls.password.touched">
+        @if(formData.controls.password.hasError("required")){
+            Password is required
+        }@else{
+            Password must be at least 6 characters
+        }
+    </div>
+
+
+    <button id="submitBtn" [disabled]="duringAnimation" class="submitBtn" type="submit">Log In</button>
+</form>
