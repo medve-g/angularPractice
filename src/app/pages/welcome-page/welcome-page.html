@@ -1,1 +1,20 @@
-<h1>Hello World</h1>
+<div class="container mt-4">
+  @if (posts !== null && posts.length > 0) {
+    <div class="row">
+      @for (post of posts; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">{{ post.title }}</h5>
+              <p class="card-text">{{ post.body }}</p>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="alert alert-info text-center">
+      Nincsenek posztok
+    </div>
+  }
+</div>

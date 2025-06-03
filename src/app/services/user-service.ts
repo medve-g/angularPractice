@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { delay, finalize, Observable } from 'rxjs';
-import { userApiUrl } from '../apiLink';
+import { userApiUrl } from '../api/userLink';
 import { LoadingService } from './loading-service';
 
 @Injectable({
