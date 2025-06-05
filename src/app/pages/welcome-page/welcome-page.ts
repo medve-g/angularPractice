@@ -1,31 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { Navbar } from '../../components/navbar/navbar';
 import { PostService } from '../../services/post-service';
-import { Post } from '../../models/post';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-welcome-page',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './welcome-page.html',
   styleUrl: './welcome-page.css'
 })
 export class WelcomePage implements OnInit {
 
   posts: any = [];
+  userId: number = 0;
   constructor(private postService: PostService) {
-    
+
   }
 
-
   ngOnInit(): void {
-    this.postService.fetchPosts().subscribe({
+    let user = localStorage.getItem("user");
+    if (user == null || user.length == 0) {
+      return;
+    }
+    let parsedUser = JSON.parse(user);
+    this.userId = parsedUser.id;
+    this.postService.fetchPosts(this.userId).subscribe({
       next: response => {
-        this.posts = response
-        console.log(this.posts)
+        this.posts = response;
       },
-        error: error => {
-          console.error(error)
-        }
+      error: error => {
+        console.error(error);
+      }
     })
   }
 }

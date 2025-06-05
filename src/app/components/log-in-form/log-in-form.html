@@ -1,14 +1,14 @@
 <form [formGroup]="formData" (submit)="submitForm($event)">
     <div class="inputHolder">
         <label for="username">Username</label><br>
-        <input class="w-100 inputField" id="username" type="text" formControlName="username">
+        <input class="w-100 form-control" id="username" type="text" formControlName="username">
     </div>
 
     <div class="errorMsg" [class.visible] = "formData.controls.username.invalid && formData.controls.username.touched">Username required</div>
 
     <div class="inputHolder">
         <label for="password">Password</label><br>
-        <input class="w-100 inputField" id="password" type="password" formControlName="password">
+        <input class="w-100 form-control" id="password" type="password" formControlName="password">
         
     </div>
 

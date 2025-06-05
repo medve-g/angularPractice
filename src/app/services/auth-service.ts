@@ -11,7 +11,7 @@ export class AuthService {
     if (storedUser) {
       this.isLoggedIn = true
     }
-
+    
   }
 
   loggedInUser(isLoggedIn: boolean): void {

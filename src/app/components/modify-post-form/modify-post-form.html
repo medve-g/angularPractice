@@ -1,0 +1,31 @@
+<form [formGroup]="formData" (submit)="submitForm($event)" class="w-50 position-absolute top-50 start-50 translate-middle bg-white p-5 rounded-3">
+    <div class="inputHolder mb-2">
+        <label for="username">Change post title</label><br>
+        <input class="w-100 form-control" id="username" type="text" formControlName="postTitle">
+    </div>
+
+    <div class="text-danger mb-2"  [class.d-none]="!(formData.controls.postTitle.invalid && formData.controls.postTitle.touched)">
+        @if(formData.controls.postTitle.hasError("required")){
+            Post title is required
+        }@else{
+            Post title is too long
+        }
+    </div>
+
+    <div class="inputHolder">
+        <label for="postContent">Change post content</label><br>
+        <textarea class="w-100 form-control" id="postContent"  formControlName="postContent">
+        </textarea>
+    </div>
+
+    <div class="text-danger mb-2" [class.d-none]="!(formData.controls.postContent.invalid && formData.controls.postContent.touched)">
+        @if(formData.controls.postTitle.hasError("required")){
+            Post content is required
+        }@else{
+            Post content is too long
+        }
+    </div>
+
+    <button id="submitBtn" class="mt-3 btn btn-primary me-2" type="submit">Modify post</button>
+    <button id="submitBtn" class="mt-3 btn btn-danger" (click)="returnToWelcomePage()" type="button">Exit</button>
+</form>
