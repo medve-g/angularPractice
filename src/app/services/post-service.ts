@@ -14,7 +14,7 @@ export class PostService {
 
   constructor(private loadingService: LoadingService) { }
 
-  fetchPosts(id: number) :Observable<Post>{ 
+  fetchUserPosts(id: number) :Observable<Post>{ 
     let path = `${apiLink}/posts?userId=${id}`;
     return this.http.get<Post>(path);
   }
@@ -23,6 +23,17 @@ export class PostService {
     this.loadingService.setLoading(true)
     let path = `${apiLink}/posts/${id}`
     return this.http.get<Post>(path).pipe(
+      delay(400),
+      finalize(() => {
+        this.loadingService.setLoading(false)
+      })
+    )
+  }
+
+  fetchAllPosts(): Observable<Post[]>{
+    this.loadingService.setLoading(true);
+    let path = `${apiLink}/posts`
+    return this.http.get<Post[]>(path).pipe(
       delay(400),
       finalize(() => {
         this.loadingService.setLoading(false)

@@ -23,7 +23,7 @@ export class WelcomePage implements OnInit {
     }
     let parsedUser = JSON.parse(user);
     this.userId = parsedUser.id;
-    this.postService.fetchPosts(this.userId).subscribe({
+    this.postService.fetchUserPosts(this.userId).subscribe({
       next: response => {
         this.posts = response;
       },
